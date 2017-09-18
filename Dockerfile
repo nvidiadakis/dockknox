@@ -20,7 +20,8 @@ RUN yum update -y && \
 RUN cd /opt/knox-0.13.0 && \
     su - knox && \
     ./bin/ldap.sh start && \
-    ./bin/knoxcli.sh create-master && \
+#    ./bin/knoxcli.sh create-master && \
+    wget https://raw.githubusercontent.com/nvidiadakis/dockknox/master/master -O /opt/knox-0.13.0/data/security/master && chmod 600 /opt/knox-0.13.0/data/security/master && \
     ./bin/gateway.sh start
     
 CMD /bin/bash
